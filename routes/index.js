@@ -11,5 +11,7 @@ router.get('/cuisines', controllers.getAllCuisines)
 router.get('/ingredients', controllers.getAllIngredients)
 router.put('/cuisines/:id', controllers.updateCuisine)
 router.put('/ingredients/:id', controllers.updateIngredient)
+router.get('/cuisine/:name', controllers.getCuisineByName)
+router.get('/ingredient/:name', controllers.getIngredByName)
 
 module.exports = router

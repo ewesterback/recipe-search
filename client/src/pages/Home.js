@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Search from '../components/Search'
+import ApiClient from '../globals'
 
 export default class Home extends Component {
   constructor() {
@@ -11,25 +12,36 @@ export default class Home extends Component {
       searched: false
     }
   }
-  // getSearchResults = async (e) => {
-  //   e.preventDefault()
-  //   const res = await axios.get(
-  //     `https://api.rawg.io/api/games?search=${this.state.searchQuery}&key=${API_KEY}`
-  //   )
-  //   this.setState({
-  //     searchResults: res.data.results,
-  //     searchQuery: '',
-  //     searched: true
-  //   })
-  // }
-  // handleChange = (event) => {
-  //   this.setState({ searchQuery: event.target.value })
-  // }
+  getSearchResults = async (e) => {
+    e.preventDefault()
+    const cusineResults = await ApiClient.get(`/cuisine/${this.state.cuisine}`)
+    const ingredResults = await ApiClient.get(
+      `/ingredient/${this.state.ingredient}`
+    )
+    const cuisineRecipes = cusineResults.data.recipes.recipes
+    const ingredRecipes = ingredResults.data.recipes.recipes
+    console.log(cuisineRecipes)
+    console.log(ingredRecipes)
+    this.setState({
+      //   searchResults: res.data.results,
+      cuisine: '',
+      ingredient: ''
+      //   searched: true
+    })
+  }
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
   render() {
     return (
       <div>
         <h2>home</h2>
-        <Search cuisine={this.state.cuisine} />
+        <Search
+          cuisine={this.state.cuisine}
+          ingredient={this.state.ingredient}
+          onSubmit={this.getSearchResults}
+          onChange={this.handleChange}
+        />
       </div>
     )
   }

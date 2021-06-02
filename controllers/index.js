@@ -110,6 +110,30 @@ const updateIngredient = async (req, res) => {
     return res.status(500).send(error.message)
   }
 }
+const getCuisineByName = async (req, res) => {
+  try {
+    const { name } = req.params
+    const recipes = await Cuisine.findOne({ name: name }, { recipes: 1 })
+    if (recipes) {
+      return res.status(200).json({ recipes })
+    }
+    return res.status(404).send('No recipes exist for that cuisine')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+const getIngredByName = async (req, res) => {
+  try {
+    const { name } = req.params
+    const recipes = await MainIngredient.findOne({ name: name }, { recipes: 1 })
+    if (recipes) {
+      return res.status(200).json({ recipes })
+    }
+    return res.status(404).send('No recipes exist for that Ingredient')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
 module.exports = {
   getAllRecipes,
   getAllCuisines,
@@ -118,5 +142,7 @@ module.exports = {
   getRecipeById,
   updateRecipe,
   updateCuisine,
-  updateIngredient
+  updateIngredient,
+  getCuisineByName,
+  getIngredByName
 }
