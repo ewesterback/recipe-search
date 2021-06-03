@@ -7,6 +7,7 @@ import Nav from './components/Nav'
 import Home from './pages/Home'
 import RecipeDetails from './pages/RecipeDetails'
 import BrowseRecipes from './pages/BrowseRecipes'
+import RecipeForm from './pages/RecipeForm'
 
 class App extends Component {
   constructor() {
@@ -45,7 +46,7 @@ class App extends Component {
               />
             )}
           />
-
+          <Route exact path="/add-recipe" component={RecipeForm} />
           <Route
             exact
             path="/browse"

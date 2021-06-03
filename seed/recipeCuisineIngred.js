@@ -135,33 +135,6 @@ const createRecipe = async (ingredients, cuisines) => {
   console.log('Created recipes!')
   return newRecipesArr
 }
-// //
-// for (i = 0; i < recipes.length; i++) {
-//   let cuisineId = recipes[i].cuisine
-//   console.log(cuisineId)
-//   // let cuisineArr = await Cuisine.findOne({ _id: cuisineId }, { recipes: 1 })
-//   // await Cuisine.updateOne(
-//   //   { _id: cuisineId },
-//   //   { $push: { recipes: recipes[i]._id } }
-//   // )
-//   let cuisine = await Cuisine.findOne({ _id: cuisineId })
-//   cuisine.recipes.push
-//   console.log(cuisineArr)
-// }
-// let cuisineArr = [
-//   {
-//     name: 'Italian'
-//   },
-//   {
-//     name: 'Asian'
-//   }
-// ]
-// const newCuisineArr = cuisineArr.map((cuisine) => {
-//   return new Cuisine(cuisine)
-// })
-// await Cuisine.insertMany(newCuisineArr)
-// return newCuisineArr
-//}
 
 const run = async () => {
   const cuisines = await createCuisines()
