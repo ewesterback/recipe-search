@@ -113,11 +113,11 @@ const updateIngredient = async (req, res) => {
 const getCuisineByName = async (req, res) => {
   try {
     const { name } = req.params
-    const recipes = await Cuisine.findOne({ name: name }, { recipes: 1 })
-    if (recipes) {
-      return res.status(200).json({ recipes })
+    const cuisines = await Cuisine.findOne({ name: name })
+    if (cuisines) {
+      return res.status(200).json({ cuisines })
     }
-    return res.status(404).send('No recipes exist for that cuisine')
+    return res.status(404).send('No cuisines exist for that name')
   } catch (error) {
     return res.status(500).send(error.message)
   }
@@ -125,9 +125,9 @@ const getCuisineByName = async (req, res) => {
 const getIngredByName = async (req, res) => {
   try {
     const { name } = req.params
-    const recipes = await MainIngredient.findOne({ name: name }, { recipes: 1 })
-    if (recipes) {
-      return res.status(200).json({ recipes })
+    const ingred = await MainIngredient.findOne({ name: name })
+    if (ingred) {
+      return res.status(200).json({ ingred })
     }
     return res.status(404).send('No recipes exist for that Ingredient')
   } catch (error) {

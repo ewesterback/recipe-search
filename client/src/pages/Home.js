@@ -23,13 +23,15 @@ export default class Home extends Component {
       const cuisineResults = await ApiClient.get(
         `/cuisine/${this.state.cuisine}`
       )
-      cuisineRecipes = cuisineResults.data.recipes.recipes
+      console.log(cuisineResults)
+      cuisineRecipes = cuisineResults.data.cuisines.recipes
     }
     if (this.state.ingredient.length > 0) {
       const ingredResults = await ApiClient.get(
         `/ingredient/${this.state.ingredient}`
       )
-      ingredRecipes = ingredResults.data.recipes.recipes
+      console.log(ingredResults)
+      ingredRecipes = ingredResults.data.ingred.recipes
     }
     let searchResults = []
     if (cuisineRecipes.length < 1) {
