@@ -14,7 +14,8 @@ class App extends Component {
     super()
     this.state = {
       recipes: [],
-      selectedRecipe: null
+      selectedRecipe: null,
+      currentPage: '/'
     }
   }
   async componentDidMount() {
@@ -22,10 +23,10 @@ class App extends Component {
     console.log(res)
     this.setState({ recipes: res.data.recipes })
   }
-  selectRecipe = (recipe) => {
+  selectRecipe = (recipe, fromPage) => {
     console.log('hi')
     console.log(recipe)
-    this.setState({ selectedRecipes: recipe })
+    this.setState({ selectedRecipes: recipe, currentPage: fromPage })
   }
   render() {
     return (
@@ -43,6 +44,7 @@ class App extends Component {
                 recipes={this.state.recipes}
                 selectedRecipes={this.state.selectedRecipes}
                 selectRecipe={this.selectRecipe}
+                currentPage={this.state.currentPage}
               />
             )}
           />
@@ -56,6 +58,7 @@ class App extends Component {
                 recipes={this.state.recipes}
                 selectedRecipes={this.state.selectedRecipes}
                 selectRecipe={this.selectRecipe}
+                currentPage={this.state.currentPage}
               />
             )}
           />
@@ -66,6 +69,7 @@ class App extends Component {
               <RecipeDetails
                 {...props}
                 selectedRecipes={this.state.selectedRecipes}
+                currentPage={this.state.currentPage}
               />
             )}
           />

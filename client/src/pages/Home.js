@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Search from '../components/Search'
 import ApiClient from '../globals'
 import RecipeCard from '../components/RecipeCard'
+import SearchCompletion from '../components/SearchCompletion'
 
 export default class Home extends Component {
   constructor() {
@@ -11,54 +12,23 @@ export default class Home extends Component {
       cuisine: '',
       ingredient: '',
       searchResults: [],
-      searched: false
+      searched: false,
+      curPage: '/'
     }
   }
-  getSearchResults = async (e) => {
+  getSearchResults = async (e, data) => {
     e.preventDefault()
-    this.setState({ searchResults: [] })
-    let cuisineRecipes = []
-    let ingredRecipes = []
-    if (this.state.cuisine.length > 0) {
-      const cuisineResults = await ApiClient.get(
-        `/cuisine/${this.state.cuisine}`
-      )
-      console.log(cuisineResults)
-      cuisineRecipes = cuisineResults.data.cuisines.recipes
-    }
-    if (this.state.ingredient.length > 0) {
-      const ingredResults = await ApiClient.get(
-        `/ingredient/${this.state.ingredient}`
-      )
-      console.log(ingredResults)
-      ingredRecipes = ingredResults.data.ingred.recipes
-    }
-    let searchResults = []
-    if (cuisineRecipes.length < 1) {
-      searchResults = ingredRecipes
-    } else if (ingredRecipes.length < 1) {
-      searchResults = cuisineRecipes
-    } else {
-      for (let i = 0; i < cuisineRecipes.length; i++) {
-        console.log(cuisineRecipes[i])
-        if (ingredRecipes.some((arrVal) => cuisineRecipes[i] === arrVal)) {
-          searchResults.push(cuisineRecipes[i])
-        }
-      }
-    }
-
-    if (searchResults.length > 0) {
-      searchResults.forEach((id) => {
-        this.getRecipe(id)
-      })
-    }
-    this.setState({
-      cuisine: '',
-      ingredient: '',
-      searched: true
-    })
-    console.log('recipe results')
-    console.log(this.state.searchResults)
+    console.log(data)
+    const res = await ApiClient.get(
+      `/search/recipes?searchTerm=${data.result._id}`
+    )
+    console.log(res)
+    this.setState({ searchResults: res.data, searched: true })
+  }
+  getAllRecipes = async () => {
+    console.log('here')
+    const res = await ApiClient.get('/recipes')
+    this.setState({ searchResults: res.data.recipes })
   }
   getRecipe = async (id) => {
     try {
@@ -80,12 +50,8 @@ export default class Home extends Component {
     return (
       <div>
         <h2>home</h2>
-        <Search
-          cuisine={this.state.cuisine}
-          ingredient={this.state.ingredient}
-          onSubmit={this.getSearchResults}
-          onChange={this.handleChange}
-        />
+        <button className="delete">Delete</button>
+        <SearchCompletion getSearchResult={this.getSearchResults} />
         {this.state.searched ? (
           <>
             <h3>Search Results</h3>
@@ -96,6 +62,7 @@ export default class Home extends Component {
                   showRecipe={this.showRecipe}
                   selectRecipe={this.props.selectRecipe}
                   selectedRecipes={this.props.selectedRecipes}
+                  fromPage={this.state.curPage}
                   recipe={recipe}
                 />
               ))}

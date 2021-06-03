@@ -13,5 +13,10 @@ router.put('/cuisines/:id', controllers.updateCuisine)
 router.put('/ingredients/:id', controllers.updateIngredient)
 router.get('/cuisine/:name', controllers.getCuisineByName)
 router.get('/ingredient/:name', controllers.getIngredByName)
+router.delete('/recipes/:id', controllers.deleteRecipe)
+router.get('/search', controllers.search)
+router.get('/search/recipes', controllers.listRecipes)
+router.get('/search/cuisines', controllers.cuisineSearch)
+router.get('/search/ingredients', controllers.ingredSearch)
 
 module.exports = router

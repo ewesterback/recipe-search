@@ -8,6 +8,28 @@ const getAllRecipes = async (req, res) => {
     return res.status(500).send(error.message)
   }
 }
+const search = async (req, res) => {
+  const cuisines = await Cuisine.find({
+    name: { $regex: `^${req.query.searchQuery.toLowerCase()}`, $options: 'i' }
+  }).select('name')
+  const ingredients = await MainIngredient.find({
+    name: { $regex: `^${req.query.searchQuery.toLowerCase()}`, $options: 'i' }
+  }).select('name')
+  let results = [...cuisines, ...ingredients]
+  res.send(results)
+}
+const cuisineSearch = async (req, res) => {
+  const cuisines = await Cuisine.find({
+    name: { $regex: `^${req.query.searchQuery.toLowerCase()}`, $options: 'i' }
+  }).select('name')
+  res.send(cuisines)
+}
+const ingredSearch = async (req, res) => {
+  const ingreds = await MainIngredient.find({
+    name: { $regex: `^${req.query.searchQuery.toLowerCase()}`, $options: 'i' }
+  }).select('name')
+  res.send(ingreds)
+}
 const getAllCuisines = async (req, res) => {
   try {
     const cuisines = await Cuisine.find()
@@ -134,6 +156,31 @@ const getIngredByName = async (req, res) => {
     return res.status(500).send(error.message)
   }
 }
+const deleteRecipe = async (req, res) => {
+  try {
+    const { id } = req.params
+    const deleted = await Recipe.findByIdAndDelete(id)
+    if (deleted) {
+      return res.status(200).json({ deleted })
+    }
+    return res.status(404).send('Recipe not found')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+const listRecipes = async (req, res) => {
+  try {
+    const recipes = await Recipe.find({
+      $or: [
+        { cuisine: req.query.searchTerm },
+        { mainIngredient: req.query.searchTerm }
+      ]
+    })
+    res.send(recipes)
+  } catch (error) {
+    res.send([])
+  }
+}
 module.exports = {
   getAllRecipes,
   getAllCuisines,
@@ -144,5 +191,10 @@ module.exports = {
   updateCuisine,
   updateIngredient,
   getCuisineByName,
-  getIngredByName
+  getIngredByName,
+  deleteRecipe,
+  search,
+  listRecipes,
+  cuisineSearch,
+  ingredSearch
 }

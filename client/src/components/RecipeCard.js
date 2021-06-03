@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 export default class RecipeCard extends Component {
   render() {
     console.log(this.props)
-    const { recipe } = this.props
+    const { recipe, fromPage } = this.props
 
     return (
       <div
         className="recipe-card"
         onClick={() => {
-          this.props.selectRecipe(recipe)
+          this.props.selectRecipe(recipe, fromPage)
           this.props.showRecipe(recipe)
         }}
       >

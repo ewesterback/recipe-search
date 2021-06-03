@@ -27,6 +27,7 @@ export default class BrowseRecipes extends Component {
           selectRecipe={this.props.selectRecipe}
           selectedRecipes={this.props.selectedRecipes}
           recipe={recipe}
+          fromPage={'/browse'}
         />
       )
     })
