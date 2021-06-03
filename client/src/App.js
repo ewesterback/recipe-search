@@ -33,7 +33,18 @@ class App extends Component {
           <Nav />
         </header>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            component={(props) => (
+              <Home
+                {...props}
+                recipes={this.state.recipes}
+                selectedRecipes={this.state.selectedRecipes}
+                selectRecipe={this.selectRecipe}
+              />
+            )}
+          />
 
           <Route
             exact

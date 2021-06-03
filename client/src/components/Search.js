@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import 'semantic-ui-css/semantic.min.css'
 
 export default class Search extends Component {
   render() {
@@ -7,14 +8,14 @@ export default class Search extends Component {
         <input
           type="text"
           placeholder="Search Cuisine"
-          value={this.props.value}
+          value={this.props.cuisine}
           onChange={this.props.onChange}
           name="cuisine"
         />
         <input
           type="text"
           placeholder="Search Main Ingredient"
-          value={this.props.value}
+          value={this.props.ingredient}
           onChange={this.props.onChange}
           name="ingredient"
         />
