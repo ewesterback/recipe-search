@@ -88,10 +88,14 @@ export default class Home extends Component {
             </>
           ) : (
             <>
-              <h3>Cuisines</h3>
-              <AllCuisines />
-              <h3>Main Ingredients</h3>
-              <AllIngreds />
+              <div className="example-ingred-cuis">
+                <div className="example-text">
+                  <h3>Cuisines</h3>
+                  <AllCuisines />
+                  <h3>Main Ingredients</h3>
+                  <AllIngreds />
+                </div>
+              </div>
             </>
           )}
         </div>
