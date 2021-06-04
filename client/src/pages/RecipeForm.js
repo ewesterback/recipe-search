@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ApiClient from '../globals'
-import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react'
+import { Search, Grid, Header, Segment, Label, Input } from 'semantic-ui-react'
 import AllCuisines from '../components/AllCuisines'
 import AllIngred from '../components/AllIngred'
 import AddCuisine from '../components/AddCuisine'
@@ -134,12 +134,13 @@ export default class recipeForm extends Component {
       <div className="new-recipe">
         <div className="recipe-input-form">
           <div className="top-inputs">
-            <input
+            <Input
               type="text"
               value={this.state.name}
               onChange={this.handleChange}
               name="name"
               placeholder="recipe name"
+              className="ui input"
             />
             <div className="ingred-search">
               <p>Main Ingredient</p>

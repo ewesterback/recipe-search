@@ -21,18 +21,16 @@ export default class BrowseRecipes extends Component {
   render() {
     const recipeLists = this.state.recipes.map((recipe, index) => {
       return (
-        <div className="browse-recipe">
-          <RecipeCard
-            key={index}
-            showRecipe={this.showRecipe}
-            selectRecipe={this.props.selectRecipe}
-            selectedRecipes={this.props.selectedRecipes}
-            recipe={recipe}
-            fromPage={'/browse'}
-          />
-        </div>
+        <RecipeCard
+          key={index}
+          showRecipe={this.showRecipe}
+          selectRecipe={this.props.selectRecipe}
+          selectedRecipes={this.props.selectedRecipes}
+          recipe={recipe}
+          fromPage={'/browse'}
+        />
       )
     })
-    return <div className="recipes">{recipeLists}</div>
+    return <div className="browse-recipes">{recipeLists}</div>
   }
 }

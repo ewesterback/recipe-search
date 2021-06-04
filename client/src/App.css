@@ -9,7 +9,7 @@
   padding: 1rem;
   font-size: 2rem;
 }
-.browse-recipe {
+.browse-recipes {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -27,6 +27,19 @@
   max-width: 300px;
 }
 .recipe-card {
-  max-width: 300px;
-  border: 1px solid blue;
+  width: 300px;
+  margin: 0.5rem;
+  text-align: center;
+}
+.recipe-card h2 {
+  margin: 7px;
+}
+.recipe-card h3 {
+  margin: 4px;
+}
+.recipe-card h4 {
+  margin: 4px;
+}
+.recipe-card p {
+  margin: 4px;
 }
