@@ -248,10 +248,12 @@ export default class recipeForm extends Component {
         </div>
         <div className="add-cuisine-ingred">
           <div className="recipe-form-cuisine">
+            <p>Don't see your cuisine on the list? Add it!</p>
             <AddCuisine />
             <AllCuisines />
           </div>
           <div className="recipe-form-ingred">
+            <p>Don't see your main ingredient on the list? Add it!</p>
             <AddIngred />
             <AllIngred />
           </div>

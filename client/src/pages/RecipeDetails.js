@@ -17,26 +17,33 @@ export default class RecipeDetails extends Component {
     console.log('in details')
     console.log(recipe)
     return recipe ? (
-      <div>
-        <button className="delete" onClick={this.deleteRecipe}>
-          Delete
-        </button>
-        <img src={recipe.image} alt={recipe.name} />
-        <h2 className="recipe-name">{recipe.name}</h2>
-        <h4 className="recipe-description">{recipe.description}</h4>
-        <h3>{recipe.cuisine.name}</h3>
-        <h3>{recipe.mainIngredient.name}</h3>
-        <p className="time">Total Time: {recipe.time} minutes</p>
-        <ul className="ingredientlist">
-          {recipe.ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
-        </ul>
-        <ul>
-          {recipe.instructions.map((instruction, index) => (
-            <li key={index}>{instruction}</li>
-          ))}
-        </ul>
+      <div className="recipe-grid-container">
+        <div className="image-container">
+          <img src={recipe.image} alt={recipe.name} />
+        </div>
+        <div className="recipe-details-header">
+          <button className="delete" onClick={this.deleteRecipe}>
+            Delete
+          </button>
+
+          <h2 className="recipe-name">{recipe.name}</h2>
+          <h4 className="recipe-description">{recipe.description}</h4>
+          <h3>{recipe.cuisine.name}</h3>
+          <h3>{recipe.mainIngredient.name}</h3>
+          <p className="time">Total Time: {recipe.time} minutes</p>
+        </div>
+        <div className="recipe-details-content">
+          <ul className="ingredientlist">
+            {recipe.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+          <ol>
+            {recipe.instructions.map((instruction, index) => (
+              <li key={index}>{instruction}</li>
+            ))}
+          </ol>
+        </div>
       </div>
     ) : null
   }
