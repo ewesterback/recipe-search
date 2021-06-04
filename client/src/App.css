@@ -9,7 +9,8 @@
   padding: 1rem;
   font-size: 2rem;
 }
-.browse-recipes {
+.browse-recipes,
+.recipe-search-results {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -42,4 +43,26 @@
 }
 .recipe-card p {
   margin: 4px;
+}
+.new-recipe {
+  height: 100vh;
+  width: 100vw;
+}
+.recipe-input-form,
+.recipe-form-cuisine,
+.recipe-form-ingred {
+  margin: 5%;
+}
+.recipe-name-i {
+  width: 80%;
+  margin: 15px;
+}
+.top-inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 15px;
+}
+.ingred-search p {
+  margin: 0 0 0 15px;
 }

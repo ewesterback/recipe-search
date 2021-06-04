@@ -133,17 +133,16 @@ export default class recipeForm extends Component {
     return (
       <div className="new-recipe">
         <div className="recipe-input-form">
+          <Input
+            type="text"
+            value={this.state.name}
+            onChange={this.handleChange}
+            name="name"
+            placeholder="recipe name"
+            className="ui input recipe-name-i"
+          />
           <div className="top-inputs">
-            <Input
-              type="text"
-              value={this.state.name}
-              onChange={this.handleChange}
-              name="name"
-              placeholder="recipe name"
-              className="ui input"
-            />
             <div className="ingred-search">
-              <p>Main Ingredient</p>
               <Search
                 onResultSelect={this.getIngredSearchResults}
                 onSearchChange={this.handleIngredChange}
@@ -151,6 +150,10 @@ export default class recipeForm extends Component {
                 value={this.state.ingredSearchQuery}
                 resultRenderer={this.resultRenderer}
               />
+              <div>
+                <p>Main</p>
+                <p>Ingredient</p>
+              </div>
             </div>
             <div className="cuisine-search">
               <p>Cuisine</p>
