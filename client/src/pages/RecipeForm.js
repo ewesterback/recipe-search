@@ -3,6 +3,7 @@ import ApiClient from '../globals'
 import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react'
 import AllCuisines from '../components/AllCuisines'
 import AllIngred from '../components/AllIngred'
+import AddCuisine from '../components/AddCuisine'
 //import CuisineInput from '../components/CuisineInput'
 
 export default class recipeForm extends Component {
@@ -219,6 +220,7 @@ export default class recipeForm extends Component {
           </button>
         </div>
         <div className="recipe-form-cuisine">
+          <AddCuisine />
           <AllCuisines />
         </div>
         <div className="recipe-form-ingred">

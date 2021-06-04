@@ -59,6 +59,28 @@ const createRecipe = async (req, res) => {
     return res.status(500).json({ error: error.message })
   }
 }
+const createCuisine = async (req, res) => {
+  try {
+    const cuisine = await new Cuisine(req.body)
+    await cuisine.save()
+    return res.status(201).json({
+      cuisine
+    })
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+const createIngred = async (req, res) => {
+  try {
+    const ingred = await new MainIngredient(req.body)
+    await ingred.save()
+    return res.status(201).json({
+      ingred
+    })
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
 const getRecipeById = async (req, res) => {
   try {
     const { id } = req.params
@@ -192,6 +214,8 @@ module.exports = {
   getAllCuisines,
   getAllIngredients,
   createRecipe,
+  createIngred,
+  createCuisine,
   getRecipeById,
   updateRecipe,
   updateCuisine,
