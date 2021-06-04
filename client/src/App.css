@@ -54,7 +54,7 @@
   margin: 5%;
 }
 .recipe-name-i {
-  width: 80%;
+  width: 100%;
   margin: 15px;
 }
 .top-inputs {
@@ -62,6 +62,13 @@
   flex-direction: row;
   align-items: center;
   margin: 15px;
+  justify-content: space-around;
+}
+.ingred-search,
+.cuisine-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .ingred-search p {
   margin: 0 0 0 15px;

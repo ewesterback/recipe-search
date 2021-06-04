@@ -156,7 +156,6 @@ export default class recipeForm extends Component {
               </div>
             </div>
             <div className="cuisine-search">
-              <p>Cuisine</p>
               <Search
                 onResultSelect={this.getCuisineSearchResults}
                 onSearchChange={this.handleCuisineChange}
@@ -164,14 +163,16 @@ export default class recipeForm extends Component {
                 value={this.state.cuisineSearchQuery}
                 resultRenderer={this.resultRenderer}
               />
+              <p>Cuisine</p>
             </div>
 
-            <input
+            <Input
               type="number"
               value={this.state.time}
               onChange={this.handleChange}
               name="time"
-              placeholder="cook time in minutes"
+              placeholder="total time in minutes"
+              className="ui input"
             />
           </div>
           <div className="middle-inputs">
