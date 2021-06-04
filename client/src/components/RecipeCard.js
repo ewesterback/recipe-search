@@ -13,7 +13,9 @@ export default class RecipeCard extends Component {
           this.props.showRecipe(recipe)
         }}
       >
-        <img src={recipe.image} alt={recipe.name} />
+        <div className="recipe-card-image">
+          <img src={recipe.image} alt={recipe.name} />
+        </div>
         <h2>{recipe.name}</h2>
         <h4>{recipe.description}</h4>
         <h3>{recipe.cuisine.name}</h3>

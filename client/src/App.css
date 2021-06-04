@@ -9,3 +9,24 @@
   padding: 1rem;
   font-size: 2rem;
 }
+.browse-recipe {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.recipe-card-image {
+  height: 300px;
+  width: 300px;
+  background-color: #2f3238;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recipe-card img {
+  max-height: 300px;
+  max-width: 300px;
+}
+.recipe-card {
+  max-width: 300px;
+  border: 1px solid blue;
+}
