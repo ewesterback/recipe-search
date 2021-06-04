@@ -33,7 +33,11 @@ export default class AddIngred extends Component {
             placeholder="Main Ingredient"
             className="ui input"
           />
-          <button type="submit" className="ui button">
+          <button
+            type="submit"
+            className="ui button"
+            disabled={!this.state.name}
+          >
             Add Main Ingredient
           </button>
         </form>

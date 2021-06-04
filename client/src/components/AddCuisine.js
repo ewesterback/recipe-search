@@ -33,7 +33,11 @@ export default class AddCuisine extends Component {
             placeholder="Cuisine"
             className="ui input"
           />
-          <button type="submit" className="ui button">
+          <button
+            type="submit"
+            className="ui button"
+            disabled={!this.state.name}
+          >
             Add Cuisine
           </button>
         </form>
