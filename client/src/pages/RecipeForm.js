@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import ApiClient from '../globals'
-import { Search, Grid, Header, Segment, Label, Input } from 'semantic-ui-react'
+import {
+  Search,
+  Grid,
+  Header,
+  Segment,
+  Label,
+  Input,
+  Button
+} from 'semantic-ui-react'
 import AllCuisines from '../components/AllCuisines'
 import AllIngred from '../components/AllIngred'
 import AddCuisine from '../components/AddCuisine'
@@ -176,30 +184,36 @@ export default class recipeForm extends Component {
             />
           </div>
           <div className="middle-inputs">
-            <input
+            <Input
               type="text"
               value={this.state.description}
               onChange={this.handleChange}
               name="description"
               placeholder="description"
+              className="ui input"
             />
-            <input
+            <Input
               type="text"
               value={this.state.image}
               onChange={this.handleChange}
               name="image"
               placeholder="image url"
+              className="ui input"
             />
           </div>
           <div className="bottom-inputs">
-            <input
+            <Input
               type="text-area"
               value={this.state.currentIngredient}
               onChange={this.handleChange}
               name="currentIngredient"
               placeholder="ingredients"
+              className="ui input"
             />
-            <button className="additional-items" onClick={this.handleAddIngred}>
+            <button
+              className="additional-items ui button"
+              onClick={this.handleAddIngred}
+            >
               Add ingredient
             </button>
             <ul className="form-ingredient-list">
@@ -207,14 +221,18 @@ export default class recipeForm extends Component {
                 <li key={index}>{ingredient}</li>
               ))}
             </ul>
-            <input
+            <Input
               type="text-area"
               value={this.state.currentInstruction}
               onChange={this.handleChange}
               name="currentInstruction"
               placeholder="instructions"
+              className="ui input"
             />
-            <button className="additional-items" onClick={this.handleAddInstr}>
+            <button
+              className="additional-items ui button"
+              onClick={this.handleAddInstr}
+            >
               Add instructions
             </button>
             <ol className="form-instruction-list">
@@ -224,17 +242,19 @@ export default class recipeForm extends Component {
             </ol>
           </div>
 
-          <button className="submit" onClick={this.handleSubmit}>
+          <button className="submit ui button" onClick={this.handleSubmit}>
             Submit
           </button>
         </div>
-        <div className="recipe-form-cuisine">
-          <AddCuisine />
-          <AllCuisines />
-        </div>
-        <div className="recipe-form-ingred">
-          <AddIngred />
-          <AllIngred />
+        <div className="add-cuisine-ingred">
+          <div className="recipe-form-cuisine">
+            <AddCuisine />
+            <AllCuisines />
+          </div>
+          <div className="recipe-form-ingred">
+            <AddIngred />
+            <AllIngred />
+          </div>
         </div>
       </div>
     )

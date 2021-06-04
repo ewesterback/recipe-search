@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ApiClient from '../globals'
+import { Input, Button } from 'semantic-ui-react'
 
 export default class AddCuisine extends Component {
   constructor(props) {
@@ -24,14 +25,17 @@ export default class AddCuisine extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input
+          <Input
             type="text"
             value={this.state.name}
             onChange={this.handleChange}
             name="name"
             placeholder="Cuisine"
+            className="ui input"
           />
-          <button type="submit">Add Cuisine</button>
+          <button type="submit" className="ui button">
+            Add Cuisine
+          </button>
         </form>
       </div>
     )

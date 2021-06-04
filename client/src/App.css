@@ -73,3 +73,19 @@
 .ingred-search p {
   margin: 0 0 0 15px;
 }
+.middle-input {
+  display: flex;
+  flex-direction: column;
+}
+.add-cuisine-ingred {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+}
+.recipe-form-cuisine {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.recipe-form-ingred {
+  grid-area: 1 / 2 / 2 / 3;
+}
