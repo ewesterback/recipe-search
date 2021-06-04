@@ -52,7 +52,6 @@ export default class Home extends Component {
     return (
       <div>
         <h2>home</h2>
-        <button className="delete">Delete</button>
         <SearchCompletion getSearchResult={this.getSearchResults} />
         {this.state.searched ? (
           <>
