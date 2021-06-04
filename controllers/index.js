@@ -63,6 +63,8 @@ const getRecipeById = async (req, res) => {
   try {
     const { id } = req.params
     const recipe = await Recipe.findById(id)
+      .populate('cuisine')
+      .populate('mainIngredient')
     if (recipe) {
       return res.status(200).json({ recipe })
     }
@@ -177,10 +179,9 @@ const listRecipes = async (req, res) => {
         { cuisine: req.query.searchTerm },
         { mainIngredient: req.query.searchTerm }
       ]
-    }).populate({
-      path: 'cuisine',
-      select: 'name'
     })
+      .populate('cuisine')
+      .populate('mainIngredient')
     res.send(recipes)
   } catch (error) {
     res.send([])

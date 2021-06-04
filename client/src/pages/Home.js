@@ -4,6 +4,7 @@ import Search from '../components/Search'
 import ApiClient from '../globals'
 import RecipeCard from '../components/RecipeCard'
 import SearchCompletion from '../components/SearchCompletion'
+import AllCuisines from '../components/AllCuisines'
 
 export default class Home extends Component {
   constructor() {
@@ -68,7 +69,12 @@ export default class Home extends Component {
               ))}
             </section>
           </>
-        ) : null}
+        ) : (
+          <>
+            <h3>Cuisines</h3>
+            <AllCuisines />
+          </>
+        )}
       </div>
     )
   }

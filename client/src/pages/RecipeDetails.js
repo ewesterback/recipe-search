@@ -24,6 +24,8 @@ export default class RecipeDetails extends Component {
         <img src={recipe.image} alt={recipe.name} />
         <h2 className="recipe-name">{recipe.name}</h2>
         <h4 className="recipe-description">{recipe.description}</h4>
+        <h3>{recipe.cuisine.name}</h3>
+        <h3>{recipe.mainIngredient.name}</h3>
         <p className="time">Total Time: {recipe.time} minutes</p>
         <ul className="ingredientlist">
           {recipe.ingredients.map((ingredient, index) => (
