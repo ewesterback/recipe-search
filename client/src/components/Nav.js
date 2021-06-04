@@ -5,11 +5,15 @@ export default class Nav extends Component {
   render() {
     return (
       <nav className="navbar">
-        <div>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/browse">Browse</NavLink>
-          <NavLink to="/add-recipe">Add Recipe</NavLink>
-        </div>
+        <NavLink className="nav-link" to="/">
+          Home
+        </NavLink>
+        <NavLink className="nav-link" to="/browse">
+          Browse
+        </NavLink>
+        <NavLink className="nav-link" to="/add-recipe">
+          Add Recipe
+        </NavLink>
       </nav>
     )
   }

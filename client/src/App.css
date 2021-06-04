@@ -1,0 +1,11 @@
+.navbar {
+  background-color: cornflowerblue;
+  color: black;
+  display: flex;
+  justify-content: space-around;
+}
+.nav-link {
+  color: black;
+  padding: 1rem;
+  font-size: 2rem;
+}
