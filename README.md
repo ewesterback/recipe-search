@@ -1,6 +1,6 @@
 # Project 2 - recipe-search
 
-## Date: 06/14/2021
+## Date: 06/04/2021
 
 ### By: Emily Westerback
 
@@ -9,7 +9,7 @@
 
 
 ### *Description*
-Recipe repository thst allow you to seacrh by cusiine type and main ingredient (chicken, beef, vegetarian, etc.),  It also has a form to input new recipes.
+Recipe repository thst allow you to seacrh by cusiine type and main ingredient (chicken, beef, vegetarian, etc.),  It also has a form to input new recipes and a page to browse all recipes.
 ***
 
 ### *Technologies Used*
@@ -20,38 +20,37 @@ Recipe repository thst allow you to seacrh by cusiine type and main ingredient (
 ***
 
 ### *Getting Started*
-* To get started, search for a recipe in the search bar by cuisine type or main ingredient.
-* A Trello board as used to track application and can be viewed [here](https://trello.com/b/u9ycsxfA/project-1).
+* To get started, search for a recipe in the search bar by cuisine type or main ingredient or both.  Click on the recipe card to get the full recipe.
+* A Trello board as used to track application and can be viewed [here](https://trello.com/b/j77523pS/project2).
 * The project has been deployed and can be viewed [here](s).
 ***
 
 ### *Screenshots*
-##### Screenshot #1
-![Recipe search](link)
-##### Screenshot #2
-![Recipe Details](link)
+##### Recipe Search for Asian Cuisine
+![Recipe search](https://imgur.com/GFb7mHO.jpg)
+##### Browse all recipes
+![Recipe Details](https://imgur.com/KdMnb2y.jpg)
 ##### Sreenshot #3
-![Recipe input form]()
+![Recipe input form](https://imgur.com/KeacmBy.jpg)
 
 
 ***
 
 ### *Future Updates*
-- [x] ~~crossed out thing~~
-- [] future updates
+- [x] ~~Ability to search two things at the same time~~
+- [] Update cuisne and main ingredient list when added
+- [] Add functionality to search over additional items
+- [] Add functionality to edit recipes
 ***
 
 ### *Credits*
 ##### Tools utilized: 
-* Background design: [Canva](https://www.canva.com/)
 * CSS Grid Layout: [Layoutit!](https://grid.layoutit.com/)
 * Color picker: [Google](https://www.google.com/search?q=color+picker)
-* Google Fonts: [Unica One](https://fonts.google.com/specimen/Unica+One?query=unica)
-* Google Fonts: [Montserrat](https://fonts.google.com/specimen/Montserrat?query=mon)
-* Google Fonts: [Monoton](https://fonts.google.com/specimen/Monoton?query=monoton)
+* Semantics UI: [Semantic UI React](https://react.semantic-ui.com/)
+
 
 ##### References:
-* Article on using tetris for anxiety: [Mental Floss](https://www.mentalfloss.com/article/563624/tetris-could-help-relieve-anxiety-stress)
 * HTML/CSS/Javascript reference: [W3 schools](https://www.w3schools.com/)
 * HTML/CSS/Javascript reference: [MDN](https://developer.mozilla.org/en-US/)
 
