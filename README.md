@@ -22,7 +22,7 @@ Recipe repository thst allow you to seacrh by cusiine type and main ingredient (
 ### *Getting Started*
 * To get started, search for a recipe in the search bar by cuisine type or main ingredient or both.  Click on the recipe card to get the full recipe.
 * A Trello board as used to track application and can be viewed [here](https://trello.com/b/j77523pS/project2).
-* The project has been deployed and can be viewed [here](s).
+* The project has been deployed and can be viewed [here](https://secure-harbor-68888.herokuapp.com/).
 ***
 
 ### *Screenshots*
