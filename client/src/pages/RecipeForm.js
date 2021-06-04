@@ -150,6 +150,14 @@ export default class recipeForm extends Component {
             className="ui input recipe-name-i"
           />
           <div className="top-inputs">
+            <Input
+              type="number"
+              value={this.state.time}
+              onChange={this.handleChange}
+              name="time"
+              placeholder="total time in minutes"
+              className="ui input"
+            />
             <div className="ingred-search">
               <Search
                 onResultSelect={this.getIngredSearchResults}
@@ -173,15 +181,6 @@ export default class recipeForm extends Component {
               />
               <p>Cuisine</p>
             </div>
-
-            <Input
-              type="number"
-              value={this.state.time}
-              onChange={this.handleChange}
-              name="time"
-              placeholder="total time in minutes"
-              className="ui input"
-            />
           </div>
           <div className="middle-inputs">
             <Input
@@ -242,7 +241,20 @@ export default class recipeForm extends Component {
             </ol>
           </div>
 
-          <button className="submit ui button" onClick={this.handleSubmit}>
+          <button
+            className="submit ui button"
+            onClick={this.handleSubmit}
+            disabled={
+              !this.state.name ||
+              !this.state.cuisine ||
+              !this.state.mainIngredient ||
+              !this.state.time ||
+              (this.state.ingredients.length < 1 &&
+                !this.state.currentIngredient) ||
+              (this.state.instructions.length < 1 &&
+                !this.state.currentInstruction)
+            }
+          >
             Submit
           </button>
         </div>
