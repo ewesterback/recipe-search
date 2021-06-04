@@ -18,11 +18,19 @@ export default class Home extends Component {
       curPage: '/'
     }
   }
-  getSearchResults = async (e, data) => {
-    e.preventDefault()
-    console.log(data)
+  // getSearchResults = async (e, data) => {
+  //   e.preventDefault()
+  //   console.log(data)
+  //   const res = await ApiClient.get(
+  //     `/search/recipes?searchTerm=${data.result._id}`
+  //   )
+  //   console.log(res)
+  //   this.setState({ searchResults: res.data, searched: true })
+  // }
+  getSearchResults = async (search1, search2) => {
+    console.log(`search1 ${search1} and search2 ${search2}`)
     const res = await ApiClient.get(
-      `/search/recipes?searchTerm=${data.result._id}`
+      `/search/recipes?searchTerm1=${search1}&searchTerm2=${search2}`
     )
     console.log(res)
     this.setState({ searchResults: res.data, searched: true })
