@@ -51,7 +51,15 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <h2>home</h2>
+        <p>
+          Finally a way to answer the dreaded question of "What's for dinner
+          tonight?" Search for recipes from a specific cuisine, recipes with a
+          specific main ingredient, or both!{' '}
+        </p>
+        <p>
+          Add your own recipes by navigating to "Add Recipe" or browse all
+          Recipes by navigating to "Browse"
+        </p>
         <SearchCompletion getSearchResult={this.getSearchResults} />
         {this.state.searched ? (
           <>
