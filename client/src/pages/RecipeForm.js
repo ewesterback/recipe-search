@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ApiClient from '../globals'
 import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react'
+import AllCuisines from '../components/AllCuisines'
+import AllIngred from '../components/AllIngred'
 //import CuisineInput from '../components/CuisineInput'
 
 export default class recipeForm extends Component {
@@ -59,31 +61,6 @@ export default class recipeForm extends Component {
     console.log('new recipe')
     console.log(newRecipe)
   }
-  // handleCuisine = async () => {
-  //   let cuisineObj
-
-  //   try {
-  //     cuisineObj = await ApiClient.get(`/cuisine/${this.state.cuisine}`)
-  //   } catch (error) {
-  //     throw error
-  //   }
-  //   let cuisineID = cuisineObj.data.cuisines._id
-  //   console.log(cuisineID)
-  //   this.setState({ cuisine: cuisineID })
-  // }
-  // handleMainIngred = async () => {
-  //   let ingredObj
-  //   try {
-  //     ingredObj = await ApiClient.get(
-  //       `/ingredient/${this.state.mainIngredient}`
-  //     )
-  //   } catch (error) {
-  //     throw error
-  //   }
-  //   let ingredID = ingredObj.data.ingred._id
-  //   console.log(ingredID)
-  //   this.setState({ mainIngredient: ingredID })
-  // }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -117,7 +94,6 @@ export default class recipeForm extends Component {
     console.log(`cusine id = ${data.result._id}`)
     this.setState({
       cuisine: data.result._id,
-      //cuisineName: data.result.name,
       cuisineSearchQuery: data.result.name
     })
   }
@@ -181,22 +157,6 @@ export default class recipeForm extends Component {
               value={this.state.cuisineSearchQuery}
               resultRenderer={this.resultRenderer}
             />
-            {/*
-            <input
-              type="text"
-              value={this.state.cuisine}
-              onChange={this.handleChange}
-              name="cuisine"
-              placeholder="cuisine"
-            />
-            <input
-              type="text"
-              value={this.state.mainIngredient}
-              onChange={this.handleChange}
-              name="mainIngredient"
-              placeholder="Main Ingredient"
-            /> 
-            */}
             <input
               type="number"
               value={this.state.time}
@@ -257,6 +217,12 @@ export default class recipeForm extends Component {
           <button className="submit" onClick={this.handleSubmit}>
             Submit
           </button>
+        </div>
+        <div className="recipe-form-cuisine">
+          <AllCuisines />
+        </div>
+        <div className="recipe-form-ingred">
+          <AllIngred />
         </div>
       </div>
     )
