@@ -5,6 +5,7 @@ import ApiClient from '../globals'
 import RecipeCard from '../components/RecipeCard'
 import SearchCompletion from '../components/SearchCompletion'
 import AllCuisines from '../components/AllCuisines'
+import AllIngreds from '../components/AllIngred'
 
 export default class Home extends Component {
   constructor() {
@@ -73,6 +74,8 @@ export default class Home extends Component {
           <>
             <h3>Cuisines</h3>
             <AllCuisines />
+            <h3>Main Ingredients</h3>
+            <AllIngreds />
           </>
         )}
       </div>
