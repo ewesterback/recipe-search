@@ -10,7 +10,6 @@ export default class AllCuisines extends Component {
   }
   async componentDidMount() {
     const res = await ApiClient.get('/cuisines')
-    console.log(res.data.cuisines)
     this.setState({ cuisines: res.data.cuisines })
   }
   render() {

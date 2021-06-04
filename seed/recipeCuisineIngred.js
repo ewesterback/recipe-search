@@ -18,7 +18,6 @@ const createIngred = async () => {
     return new MainIngredient(ingredient)
   })
   await MainIngredient.insertMany(newIngredArr)
-  console.log('created ingredients')
   return newIngredArr
 }
 const createCuisines = async () => {
@@ -132,7 +131,6 @@ const createRecipe = async (ingredients, cuisines) => {
     return new Recipe(recipe)
   })
   await Recipe.insertMany(newRecipesArr)
-  console.log('Created recipes!')
   return newRecipesArr
 }
 

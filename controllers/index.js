@@ -237,54 +237,6 @@ const listRecipes = async (req, res) => {
     recipes = []
   }
   res.send(recipes)
-
-  // const search1 = req.query.searchTerm1
-  // const search2 = req.query.searchTerm2
-  // let recipes1 = []
-  // let recipes2 = []
-  // if (search1) {
-  //   try {
-  //     recipes1 = await Recipe.find({
-  //       $or: [{ cuisine: search1 }, { mainIngredient: search1 }]
-  //     })
-  //       .populate('cuisine')
-  //       .populate('mainIngredient')
-  //   } catch (error) {
-  //     recipes1 = []
-  //   }
-  // }
-  // if (search2) {
-  //   try {
-  //     recipes2 = await Recipe.find({
-  //       $or: [{ cuisine: search2 }, { mainIngredient: search2 }]
-  //     })
-  //       .populate('cuisine')
-  //       .populate('mainIngredient')
-  //   } catch (error) {
-  //     recipes2 = []
-  //   }
-  // }
-  // let newArr = [...recipes1, ...recipes2]
-  // console.log(newArr)
-  // recipes = [...new Set(newArr)]
-  // if (recipes.length < 1) {
-  //   recipes = []
-  // }
-  // res.send(recipes)
-
-  // try {
-  //   const recipes = await Recipe.find({
-  //     $or: [
-  //       { cuisine: req.query.searchTerm },
-  //       { mainIngredient: req.query.searchTerm }
-  //     ]
-  //   })
-  //     .populate('cuisine')
-  //     .populate('mainIngredient')
-  //   res.send(recipes)
-  // } catch (error) {
-  //   res.send([])
-  // }
 }
 module.exports = {
   getAllRecipes,

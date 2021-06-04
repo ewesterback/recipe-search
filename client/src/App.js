@@ -20,12 +20,9 @@ class App extends Component {
   }
   async componentDidMount() {
     const res = await ApiClient.get('/recipes')
-    console.log(res)
     this.setState({ recipes: res.data.recipes })
   }
   selectRecipe = (recipe, fromPage) => {
-    console.log('hi')
-    console.log(recipe)
     this.setState({ selectedRecipes: recipe, currentPage: fromPage })
   }
   render() {

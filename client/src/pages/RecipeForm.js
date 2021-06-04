@@ -41,7 +41,6 @@ export default class recipeForm extends Component {
     this.handleAddInstr()
     this.handleAddIngred()
     await this.addRecipe()
-    console.log('submitted')
     this.setState({
       name: '',
       description: '',
@@ -65,8 +64,6 @@ export default class recipeForm extends Component {
     } catch (error) {
       throw error
     }
-    console.log('new recipe')
-    console.log(newRecipe)
   }
 
   handleChange = (e) => {
@@ -97,8 +94,6 @@ export default class recipeForm extends Component {
   /////////////////////////////////////////////
   getCuisineSearchResults = async (e, data) => {
     e.preventDefault()
-    console.log(data)
-    console.log(`cusine id = ${data.result._id}`)
     this.setState({
       cuisine: data.result._id,
       cuisineSearchQuery: data.result.name
@@ -106,7 +101,6 @@ export default class recipeForm extends Component {
   }
   handleCuisineChange = async (e, data) => {
     this.setState({ cuisineSearchQuery: data.value })
-    console.log(data.value)
     const res = await ApiClient.get(
       `/search/cuisines?searchQuery=${data.value}`
     )
@@ -116,8 +110,6 @@ export default class recipeForm extends Component {
   }
   getIngredSearchResults = async (e, data) => {
     e.preventDefault()
-    console.log(data)
-    console.log(`mainIngred ID = ${data.result._id}`)
     this.setState({
       mainIngredient: data.result._id,
       ingredSearchQuery: data.result.name
@@ -125,7 +117,6 @@ export default class recipeForm extends Component {
   }
   handleIngredChange = async (e, data) => {
     this.setState({ ingredSearchQuery: data.value })
-    console.log(data.value)
     const res = await ApiClient.get(
       `/search/ingredients?searchQuery=${data.value}`
     )
@@ -141,14 +132,18 @@ export default class recipeForm extends Component {
     return (
       <div className="new-recipe">
         <div className="recipe-input-form">
-          <Input
-            type="text"
-            value={this.state.name}
-            onChange={this.handleChange}
-            name="name"
-            placeholder="recipe name"
-            className="ui input recipe-name-i"
-          />
+          <h2>Add your recipe below!</h2>
+          <div clasName="recipe-name-i">
+            <Input
+              type="text"
+              value={this.state.name}
+              onChange={this.handleChange}
+              name="name"
+              placeholder="recipe name"
+              className="ui input recipe-input recipe-name-field"
+            />
+          </div>
+
           <div className="top-inputs">
             <Input
               type="number"
@@ -156,7 +151,7 @@ export default class recipeForm extends Component {
               onChange={this.handleChange}
               name="time"
               placeholder="total time in minutes"
-              className="ui input"
+              className="ui input recipe-input"
             />
             <div className="ingred-search">
               <Search
@@ -189,7 +184,7 @@ export default class recipeForm extends Component {
               onChange={this.handleChange}
               name="description"
               placeholder="description"
-              className="ui input"
+              className="ui input recipe-input"
             />
             <Input
               type="text"
@@ -197,7 +192,7 @@ export default class recipeForm extends Component {
               onChange={this.handleChange}
               name="image"
               placeholder="image url"
-              className="ui input"
+              className="ui input recipe-input"
             />
           </div>
           <div className="bottom-inputs">
@@ -207,7 +202,7 @@ export default class recipeForm extends Component {
               onChange={this.handleChange}
               name="currentIngredient"
               placeholder="ingredients"
-              className="ui input"
+              className="ui input recipe-input"
             />
             <button
               className="additional-items ui button"
@@ -226,7 +221,7 @@ export default class recipeForm extends Component {
               onChange={this.handleChange}
               name="currentInstruction"
               placeholder="instructions"
-              className="ui input"
+              className="ui input recipe-input"
             />
             <button
               className="additional-items ui button"

@@ -30,8 +30,6 @@ export default class SearchCompletion extends Component {
     })
   }
   onResultsSelectOne = (e, data) => {
-    console.log('search1 data')
-    console.log(data)
     e.preventDefault()
     this.setState({
       searchQuery1: data.result.name,
@@ -40,7 +38,6 @@ export default class SearchCompletion extends Component {
   }
   onResultsSelectTwo = (e, data) => {
     e.preventDefault()
-    console.log(data)
     this.setState({
       searchQuery2: data.result.name,
       resultsid2: data.result._id
@@ -66,24 +63,30 @@ export default class SearchCompletion extends Component {
   }
   render() {
     return (
-      <div>
-        <Search
-          onResultSelect={this.onResultsSelectOne}
-          onSearchChange={this.handleChangeOne}
-          results={this.state.results1}
-          value={this.state.searchQuery1}
-          resultRenderer={this.resultRenderer}
-        />
-        <Search
-          onResultSelect={this.onResultsSelectTwo}
-          onSearchChange={this.handleChangeTwo}
-          results={this.state.results2}
-          value={this.state.searchQuery2}
-          resultRenderer={this.resultRenderer}
-        />
-        <button className="ui button" onClick={this.findSearchResults}>
-          Search
-        </button>
+      <div className="search-completion">
+        <div className="search-ele">
+          <Search
+            onResultSelect={this.onResultsSelectOne}
+            onSearchChange={this.handleChangeOne}
+            results={this.state.results1}
+            value={this.state.searchQuery1}
+            resultRenderer={this.resultRenderer}
+          />
+        </div>
+        <div className="search-ele">
+          <Search
+            onResultSelect={this.onResultsSelectTwo}
+            onSearchChange={this.handleChangeTwo}
+            results={this.state.results2}
+            value={this.state.searchQuery2}
+            resultRenderer={this.resultRenderer}
+          />
+        </div>
+        <div className="search-ele">
+          <button className="ui button" onClick={this.findSearchResults}>
+            Search
+          </button>
+        </div>
       </div>
     )
   }

@@ -18,25 +18,13 @@ export default class Home extends Component {
       curPage: '/'
     }
   }
-  // getSearchResults = async (e, data) => {
-  //   e.preventDefault()
-  //   console.log(data)
-  //   const res = await ApiClient.get(
-  //     `/search/recipes?searchTerm=${data.result._id}`
-  //   )
-  //   console.log(res)
-  //   this.setState({ searchResults: res.data, searched: true })
-  // }
   getSearchResults = async (search1, search2) => {
-    console.log(`search1 ${search1} and search2 ${search2}`)
     const res = await ApiClient.get(
       `/search/recipes?searchTerm1=${search1}&searchTerm2=${search2}`
     )
-    console.log(res)
     this.setState({ searchResults: res.data, searched: true })
   }
   getAllRecipes = async () => {
-    console.log('here')
     const res = await ApiClient.get('/recipes')
     this.setState({ searchResults: res.data.recipes })
   }
@@ -58,49 +46,55 @@ export default class Home extends Component {
   }
   render() {
     return (
-      <div>
-        <p>
-          Finally a way to answer the dreaded question of "What's for dinner
-          tonight?" Search for recipes from a specific cuisine, recipes with a
-          specific main ingredient, or both!{' '}
-        </p>
-        <p>
-          Add your own recipes by navigating to "Add Recipe" or browse all
-          Recipes by navigating to "Browse"
-        </p>
-        <SearchCompletion getSearchResult={this.getSearchResults} />
-        {this.state.searched ? (
-          <>
-            <h3>Search Results</h3>
-            {this.state.searchResults.length > 0 ? (
-              <>
-                <section className="recipe-search-results">
-                  {this.state.searchResults.map((recipe, index) => (
-                    <RecipeCard
-                      key={index}
-                      showRecipe={this.showRecipe}
-                      selectRecipe={this.props.selectRecipe}
-                      selectedRecipes={this.props.selectedRecipes}
-                      fromPage={this.state.curPage}
-                      recipe={recipe}
-                    />
-                  ))}
-                </section>
-              </>
-            ) : (
-              <>
-                <h4>No recipes found</h4>
-              </>
-            )}
-          </>
-        ) : (
-          <>
-            <h3>Cuisines</h3>
-            <AllCuisines />
-            <h3>Main Ingredients</h3>
-            <AllIngreds />
-          </>
-        )}
+      <div className="home-container">
+        <div className="home-instructions">
+          <p>
+            Finally a way to answer the dreaded question of "What's for dinner
+            tonight?" Search for recipes from a specific cuisine, recipes with a
+            specific main ingredient, or both!{' '}
+          </p>
+          <p>
+            Add your own recipes by navigating to "Add Recipe" or browse all
+            Recipes by navigating to "Browse"
+          </p>
+        </div>
+        <div className="home-search">
+          <SearchCompletion getSearchResult={this.getSearchResults} />
+        </div>
+        <div className="home-results">
+          {this.state.searched ? (
+            <>
+              <h3>Search Results</h3>
+              {this.state.searchResults.length > 0 ? (
+                <>
+                  <section className="recipe-search-results">
+                    {this.state.searchResults.map((recipe, index) => (
+                      <RecipeCard
+                        key={index}
+                        showRecipe={this.showRecipe}
+                        selectRecipe={this.props.selectRecipe}
+                        selectedRecipes={this.props.selectedRecipes}
+                        fromPage={this.state.curPage}
+                        recipe={recipe}
+                      />
+                    ))}
+                  </section>
+                </>
+              ) : (
+                <>
+                  <h4>No recipes found</h4>
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              <h3>Cuisines</h3>
+              <AllCuisines />
+              <h3>Main Ingredients</h3>
+              <AllIngreds />
+            </>
+          )}
+        </div>
       </div>
     )
   }

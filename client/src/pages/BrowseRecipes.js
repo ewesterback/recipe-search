@@ -11,7 +11,6 @@ export default class BrowseRecipes extends Component {
   }
   async componentDidMount() {
     const res = await ApiClient.get('/recipes')
-    console.log(res)
     this.setState({ recipes: res.data.recipes })
   }
   showRecipe = (recipe) => {
