@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ApiClient from '../globals'
 import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react'
-import CuisineInput from '../components/CuisineInput'
+//import CuisineInput from '../components/CuisineInput'
 
 export default class recipeForm extends Component {
   constructor() {
@@ -44,7 +44,9 @@ export default class recipeForm extends Component {
       instructions: [],
       time: '',
       currentIngredient: '',
-      currentInstruction: ''
+      currentInstruction: '',
+      cuisineSearchQuery: '',
+      ingredSearchQuery: ''
     })
   }
   addRecipe = async () => {
@@ -57,31 +59,31 @@ export default class recipeForm extends Component {
     console.log('new recipe')
     console.log(newRecipe)
   }
-  handleCuisine = async () => {
-    let cuisineObj
+  // handleCuisine = async () => {
+  //   let cuisineObj
 
-    try {
-      cuisineObj = await ApiClient.get(`/cuisine/${this.state.cuisine}`)
-    } catch (error) {
-      throw error
-    }
-    let cuisineID = cuisineObj.data.cuisines._id
-    console.log(cuisineID)
-    this.setState({ cuisine: cuisineID })
-  }
-  handleMainIngred = async () => {
-    let ingredObj
-    try {
-      ingredObj = await ApiClient.get(
-        `/ingredient/${this.state.mainIngredient}`
-      )
-    } catch (error) {
-      throw error
-    }
-    let ingredID = ingredObj.data.ingred._id
-    console.log(ingredID)
-    this.setState({ mainIngredient: ingredID })
-  }
+  //   try {
+  //     cuisineObj = await ApiClient.get(`/cuisine/${this.state.cuisine}`)
+  //   } catch (error) {
+  //     throw error
+  //   }
+  //   let cuisineID = cuisineObj.data.cuisines._id
+  //   console.log(cuisineID)
+  //   this.setState({ cuisine: cuisineID })
+  // }
+  // handleMainIngred = async () => {
+  //   let ingredObj
+  //   try {
+  //     ingredObj = await ApiClient.get(
+  //       `/ingredient/${this.state.mainIngredient}`
+  //     )
+  //   } catch (error) {
+  //     throw error
+  //   }
+  //   let ingredID = ingredObj.data.ingred._id
+  //   console.log(ingredID)
+  //   this.setState({ mainIngredient: ingredID })
+  // }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -112,9 +114,10 @@ export default class recipeForm extends Component {
   getCuisineSearchResults = async (e, data) => {
     e.preventDefault()
     console.log(data)
+    console.log(`cusine id = ${data.result._id}`)
     this.setState({
       cuisine: data.result._id,
-      cuisineName: data.result.name,
+      //cuisineName: data.result.name,
       cuisineSearchQuery: data.result.name
     })
   }
@@ -131,6 +134,7 @@ export default class recipeForm extends Component {
   getIngredSearchResults = async (e, data) => {
     e.preventDefault()
     console.log(data)
+    console.log(`mainIngred ID = ${data.result._id}`)
     this.setState({
       mainIngredient: data.result._id,
       ingredSearchQuery: data.result.name
@@ -177,6 +181,7 @@ export default class recipeForm extends Component {
               value={this.state.cuisineSearchQuery}
               resultRenderer={this.resultRenderer}
             />
+            {/*
             <input
               type="text"
               value={this.state.cuisine}
@@ -190,7 +195,8 @@ export default class recipeForm extends Component {
               onChange={this.handleChange}
               name="mainIngredient"
               placeholder="Main Ingredient"
-            />
+            /> 
+            */}
             <input
               type="number"
               value={this.state.time}

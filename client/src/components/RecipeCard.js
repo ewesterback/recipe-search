@@ -16,6 +16,8 @@ export default class RecipeCard extends Component {
         <img src={recipe.image} alt={recipe.name} />
         <h2>{recipe.name}</h2>
         <h4>{recipe.description}</h4>
+        <h3>{recipe.cuisine.name}</h3>
+        <h3>{recipe.mainIngredient.name}</h3>
         <p>Total Time: {recipe.time} minutes</p>
       </div>
     )

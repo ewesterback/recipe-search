@@ -3,6 +3,8 @@ const { Recipe, Cuisine, MainIngredient } = require('../models/index')
 const getAllRecipes = async (req, res) => {
   try {
     const recipes = await Recipe.find()
+      .populate('cuisine')
+      .populate('mainIngredient')
     return res.status(200).json({ recipes })
   } catch (error) {
     return res.status(500).send(error.message)
@@ -175,6 +177,9 @@ const listRecipes = async (req, res) => {
         { cuisine: req.query.searchTerm },
         { mainIngredient: req.query.searchTerm }
       ]
+    }).populate({
+      path: 'cuisine',
+      select: 'name'
     })
     res.send(recipes)
   } catch (error) {
