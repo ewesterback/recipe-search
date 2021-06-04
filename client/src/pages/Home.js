@@ -64,18 +64,26 @@ export default class Home extends Component {
         {this.state.searched ? (
           <>
             <h3>Search Results</h3>
-            <section className="recipe-search-results">
-              {this.state.searchResults.map((recipe, index) => (
-                <RecipeCard
-                  key={index}
-                  showRecipe={this.showRecipe}
-                  selectRecipe={this.props.selectRecipe}
-                  selectedRecipes={this.props.selectedRecipes}
-                  fromPage={this.state.curPage}
-                  recipe={recipe}
-                />
-              ))}
-            </section>
+            {this.state.searchResults.length > 0 ? (
+              <>
+                <section className="recipe-search-results">
+                  {this.state.searchResults.map((recipe, index) => (
+                    <RecipeCard
+                      key={index}
+                      showRecipe={this.showRecipe}
+                      selectRecipe={this.props.selectRecipe}
+                      selectedRecipes={this.props.selectedRecipes}
+                      fromPage={this.state.curPage}
+                      recipe={recipe}
+                    />
+                  ))}
+                </section>
+              </>
+            ) : (
+              <>
+                <h4>No recipes found</h4>
+              </>
+            )}
           </>
         ) : (
           <>
