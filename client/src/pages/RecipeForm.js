@@ -4,7 +4,7 @@ import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react'
 import AllCuisines from '../components/AllCuisines'
 import AllIngred from '../components/AllIngred'
 import AddCuisine from '../components/AddCuisine'
-//import CuisineInput from '../components/CuisineInput'
+import AddIngred from '../components/AddIngred'
 
 export default class recipeForm extends Component {
   constructor() {
@@ -32,8 +32,6 @@ export default class recipeForm extends Component {
 
     this.handleAddInstr()
     this.handleAddIngred()
-    //await this.handleCuisine()
-    //await this.handleMainIngred()
     await this.addRecipe()
     console.log('submitted')
     this.setState({
@@ -143,21 +141,27 @@ export default class recipeForm extends Component {
               name="name"
               placeholder="recipe name"
             />
+            <div className="ingred-search">
+              <p>Main Ingredient</p>
+              <Search
+                onResultSelect={this.getIngredSearchResults}
+                onSearchChange={this.handleIngredChange}
+                results={this.state.ingredResults}
+                value={this.state.ingredSearchQuery}
+                resultRenderer={this.resultRenderer}
+              />
+            </div>
+            <div className="cuisine-search">
+              <p>Cuisine</p>
+              <Search
+                onResultSelect={this.getCuisineSearchResults}
+                onSearchChange={this.handleCuisineChange}
+                results={this.state.cuisineResults}
+                value={this.state.cuisineSearchQuery}
+                resultRenderer={this.resultRenderer}
+              />
+            </div>
 
-            <Search
-              onResultSelect={this.getIngredSearchResults}
-              onSearchChange={this.handleIngredChange}
-              results={this.state.ingredResults}
-              value={this.state.ingredSearchQuery}
-              resultRenderer={this.resultRenderer}
-            />
-            <Search
-              onResultSelect={this.getCuisineSearchResults}
-              onSearchChange={this.handleCuisineChange}
-              results={this.state.cuisineResults}
-              value={this.state.cuisineSearchQuery}
-              resultRenderer={this.resultRenderer}
-            />
             <input
               type="number"
               value={this.state.time}
@@ -224,6 +228,7 @@ export default class recipeForm extends Component {
           <AllCuisines />
         </div>
         <div className="recipe-form-ingred">
+          <AddIngred />
           <AllIngred />
         </div>
       </div>
