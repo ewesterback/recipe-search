@@ -9,13 +9,10 @@ export default class RecipeDetails extends Component {
     } catch (error) {
       throw error
     }
-    console.log(this.props.currentPage)
     this.props.history.push(`${this.props.currentPage}`)
   }
   render() {
     const recipe = this.props.selectedRecipes
-    console.log('in details')
-    console.log(recipe)
     return recipe ? (
       <div className="recipe-grid-container">
         <div className="image-container">
@@ -28,16 +25,21 @@ export default class RecipeDetails extends Component {
 
           <h2 className="recipe-name">{recipe.name}</h2>
           <h4 className="recipe-description">{recipe.description}</h4>
-          <h3>{recipe.cuisine.name}</h3>
-          <h3>{recipe.mainIngredient.name}</h3>
+          <h3>
+            {recipe.cuisine.name} | {recipe.mainIngredient.name}
+          </h3>
           <p className="time">Total Time: {recipe.time} minutes</p>
         </div>
-        <div className="recipe-details-content">
+        <div className="ingred-section">
+          <h3>Ingredients</h3>
           <ul className="ingredientlist">
             {recipe.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
+        </div>
+        <div className="instr-section">
+          <h3>Instructions</h3>
           <ol>
             {recipe.instructions.map((instruction, index) => (
               <li key={index}>{instruction}</li>
